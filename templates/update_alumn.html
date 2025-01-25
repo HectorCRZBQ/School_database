@@ -1,0 +1,25 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar alumno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Actualizar alumno</h1>
+    <form method="post" action="/update_alumn">
+        <input type="hidden" name="alumn_id" value="{{ id }}">
+        <input name="name" placeholder="Nombre del alumno" type="text">
+        <input name="email" placeholder="Correo electrónico" type="text">
+        <input name="address" placeholder="Dirección" type="text">
+        <button class="send-button" type="submit">Enviar</button>
+    </form>
+</body>
+</html>

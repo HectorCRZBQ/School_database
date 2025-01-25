@@ -1,0 +1,40 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaturas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Asignaturas</h1>
+    <form method="post" action="/search_course_audit">
+        <input name="course_id" placeholder="Buscar" type="text">
+        <button class="search-button" type="submit"></button>
+    </form>
+    <table>
+        <tr>
+            <th>Operación</th>
+            <th>Fecha</th>
+            <th>ID Asignatura</th>
+            <th>Nombre</th>
+            <th>ID Profesor</th>
+        </tr>
+        {% for row in data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

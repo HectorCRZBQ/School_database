@@ -1,0 +1,6 @@
+psycopg2-binary==2.9.10
+Faker==34.0.0
+typing-extensions==4.12.2
+elasticsearch==8.17.1
+beautifulsoup4==4.12.3
+pymongo==4.10.1

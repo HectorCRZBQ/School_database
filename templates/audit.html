@@ -1,0 +1,23 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Auditoría</h1>
+    <div class="menu">
+        <button class="send-button"><a href="{{ url_for('alumn_audit') }}">Alumnos</a></button>
+        <button class="send-button"><a href="{{ url_for('teacher_audit') }}">Profesores</a></button>
+        <button class="send-button"><a href="{{ url_for('course_audit') }}">Asignaturas</a></button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualizar asignatura</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Actualizar asignatura</h1>
+    <form method="post" action="/update_course">
+        <input type="hidden" name="course_id" value="{{ id }}">
+        <input name="name" placeholder="Nombre de la asignatura" type="text">
+        <input name="teacher_id" placeholder="ID del profesor" type="text">
+        <button class="send-button" type="submit">Enviar</button>
+    </form>
+</body>
+</html>

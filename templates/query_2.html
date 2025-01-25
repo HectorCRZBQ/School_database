@@ -1,0 +1,55 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta 2</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Consulta 2</h1>
+    {% if not search %}
+    <h2>Total: {{ total }}</h2>
+    <h2>Página {{ page }} de  {{total_pages}}</h2>
+    {% endif %}
+    <h2>Mostrar curso, alumno y profesor</h2>
+    <form method="post" action="/search_query_2">
+        <input name="name" placeholder="Nombre del curso" type="text">
+        <button class="search-button" type="submit"></button>
+    </form>
+    <table>
+        <tr>
+            <th>ID asignatura</th>
+            <th>Nombre asignatura</th>
+            <th>ID alumno</th>
+            <th>Nombre alumno</th>
+            <th>ID profesor</th>
+            <th>Nombre profesor</th>
+        </tr>
+        {% for row in query_2_data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>{{ row[4] }}</td>
+            <td>{{ row[5] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if not search %}
+    <button class="send-button insert-button">
+        <a href="{{ url_for('query_2_previous') }}">Anterior</a>
+    </button>
+    <button class="send-button">
+        <a href="{{ url_for('query_2_next') }}">Siguiente</a>
+    </button>
+    {% endif %}
+</body>
+</html>

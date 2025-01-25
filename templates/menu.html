@@ -1,0 +1,23 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Menú</h1>
+    <div class="menu">
+        <button class="send-button"><a href="{{ url_for('search') }}">Buscador</a></button>
+        <button class="send-button"><a href="{{ url_for('university') }}">Universidad</a></button>
+        <button class="send-button"><a href="{{ url_for('queries') }}">Consultas</a></button>
+        <button class="send-button"><a href="{{ url_for('audit') }}">Auditoría</a></button>
+    </div>
+</body>
+</html>

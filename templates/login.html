@@ -1,0 +1,25 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+    <form method="post" action="/check_login">
+        <input name="username" placeholder="Nombre de usuario" type="text">
+        <input name="password" placeholder="Contraseña" type="text">
+        <button class="send-button" type="submit">Enviar</button>
+    </form>
+    <button class="send-button insert-button">
+        <a href="{{ url_for('register') }}">Registrarse</a>
+    </button>
+</body>
+</html>

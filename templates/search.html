@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Buscador</h1>
+    <form method="post" action="/search">
+        <input name="search" placeholder="Busca algo..." type="text">
+        <button class="search-button" type="submit"></button>
+    </form>
+
+    {% if search_results is defined %}
+        {% if search_results %}
+            <div class="search-results-header">
+                <h2>Resultados de la búsqueda:</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Hipervínculo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for name, href in search_results %}
+                    <tr>
+                        <td>{{ name }}</td>
+                        <td><a href="{{ href }}" target="_blank">{{ href }}</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2>No se encontraron resultados para la búsqueda.</h2>
+        {% endif %}
+    {% endif %}
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignaturas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button insert-button"><a href="{{ url_for('insert_course_interface') }}">Insertar asignatura</a></button>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Asignaturas</h1>
+    {% if not search %}
+    <h2>Total: {{ total }}</h2>
+    <h2>Página {{ page }} de  {{total_pages}}</h2>
+    {% endif %}
+    <form method="post" action="/search_course">
+        <input name="keyword" placeholder="Buscar asignatura" type="text">
+        <button class="search-button" type="submit"></button>
+    </form>
+    <table>
+        <tr>
+            <th>ID asignatura</th>
+            <th>Nombre asignatura</th>
+            <th>Nombre profesor</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for row in course_data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>
+                <form action="/update_course_interface" method="post">
+                    <input type="hidden" name="course_id" value="{{ row[0] }}">
+                    <button class="green" type="submit">Actualizar</button>
+                </form>
+            </td>
+            <td>
+                <form action="/delete_course" method="post">
+                    <input type="hidden" name="course_id" value="{{ row[0] }}">
+                    <button class="red" type="submit">Eliminar</button>
+                </form>
+            </td>
+            <td>
+                <form action="/search_course_audit" method="post">
+                    <input type="hidden" name="course_id" value="{{ row[0] }}">
+                    <button class="blue" type="submit">Auditoría</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if not search %}
+    <button class="send-button insert-button">
+        <a href="{{ url_for('course_previous') }}">Anterior</a>
+    </button>
+    <button class="send-button">
+        <a href="{{ url_for('course_next') }}">Siguiente</a>
+    </button>
+    {% endif %}
+</body>
+</html>

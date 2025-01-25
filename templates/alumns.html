@@ -1,0 +1,71 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumnos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button insert-button"><a href="{{ url_for('insert_alumn_interface') }}">Insertar alumno</a></button>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Alumnos</h1>
+    {% if not search %}
+    <h2>Total: {{ total }}</h2>
+    <h2>Página {{ page }} de  {{total_pages}}</h2>
+    {% endif %}
+    <form method="post" action="/search_alumn">
+        <input name="keyword" placeholder="Buscar alumno" type="text">
+        <button class="search-button" type="submit"></button>
+    </form>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo electrónico</th>
+            <th>Dirección</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for row in alumn_data %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td>{{ row[2] }}</td>
+            <td>{{ row[3] }}</td>
+            <td>
+                <form action="/update_alumn_interface" method="post">
+                    <input type="hidden" name="alumn_id" value="{{ row[0] }}">
+                    <button class="green" type="submit">Actualizar</button>
+                </form>
+            </td>
+            <td>
+                <form action="/delete_alumn" method="post">
+                    <input type="hidden" name="alumn_id" value="{{ row[0] }}">
+                    <button class="red" type="submit">Eliminar</button>
+                </form>
+            </td>
+            <td>
+                <form action="/search_alumn_audit" method="post">
+                    <input type="hidden" name="alumn_id" value="{{ row[0] }}">
+                    <button class="blue" type="submit">Auditoría</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% if not search %}
+    <button class="send-button insert-button">
+        <a href="{{ url_for('alumn_previous') }}">Anterior</a>
+    </button>
+    <button class="send-button">
+        <a href="{{ url_for('alumn_next') }}">Siguiente</a>
+    </button>
+    {% endif %}
+</body>
+</html>

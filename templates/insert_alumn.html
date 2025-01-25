@@ -1,0 +1,24 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertar alumno</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Insertar alumno</h1>
+    <form method="post" action="/insert_new_alumn">
+        <input name="name" placeholder="Nombre del alumno" type="text" required>
+        <input name="email" placeholder="Correo electrónico" type="text" required>
+        <input name="address" placeholder="Dirección" type="text" required>
+        <button class="send-button" type="submit">Enviar</button>
+    </form>
+</body>
+</html>

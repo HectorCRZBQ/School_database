@@ -1,0 +1,23 @@
+<!--
+    Author 1: Álvaro Rivas Álvarez
+    Autohr 2: Héctor de la Cruz Baquero
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <button class="send-button back-to-menu"><a href="/menu" class="back-to-menu">Volver al Menú</a></button>
+    <h1>Consultas</h1>
+    <div class="menu">
+        <button class="send-button"><a href="{{ url_for('query_1') }}">Consulta 1</a></button>
+        <button class="send-button"><a href="{{ url_for('query_2') }}">Consulta 2</a></button>
+        <button class="send-button"><a href="{{ url_for('query_3') }}">Consulta 3</a></button>
+    </div>
+</body>
+</html>
